@@ -1,7 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
+
 const classes =
   "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600";
-function Input({ textarea, label, ...props }) {
+const Input = forwardRef(function Input({ textarea, label, ...props },ref) {
   return (
     <p className="fex flex-col gap-1 my-4">
       <label htmlFor="" className="text-sm font-bold uppercase text-stone-500">
@@ -9,12 +10,12 @@ function Input({ textarea, label, ...props }) {
         {label}{" "}
       </label>
       {textarea ? (
-        <textarea className={classes} {...props} />
+        <textarea ref={ref} className={classes} {...props} />
       ) : (
-        <input {...props} className={classes} />
+        <input ref={ref} {...props} className={classes} />
       )}
     </p>
   );
-}
+})
 
 export default Input;

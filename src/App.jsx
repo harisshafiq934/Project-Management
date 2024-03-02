@@ -19,9 +19,22 @@ setSelectedProject(prev => {
 })
 // console.log(selectedProject)
 })
+const handleAddProject =(projectData) =>{
+  setSelectedProject(prevState => {
+    const newProject = {
+      ...projectData,
+      id: Math.random() + 1 * 34 ,
+    };
+    return{
+      ...prevState,
+      Projects:[...prevState.projects, newProject]
+    }
+  })
+}
+console.log(selectedProject);
 let content;
 if(selectedProject.ProjectId === null){
-  content = <NewProject/>
+  content = <NewProject onAdd={handleAddProject}/>
 }else if(selectedProject.ProjectId === undefined){
   content = <NoProjectSelected startProject={handleSelecProject}/>
 }

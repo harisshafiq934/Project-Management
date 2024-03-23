@@ -6,16 +6,16 @@ import Modal from "./Modal";
 function NewProject({ onAdd, onCancel}) {
   const modal = useRef();
   const tittle = useRef();
-  const discription = useRef();
+  const description = useRef();
   const dueDate = useRef();
   const handleSave = () => {
     const enteredTitle = tittle.current.value;
-    const enteredDiscription = discription.current.value;
+    const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
     // console.log(project);
     if (
       enteredTitle.trim()=== '' ||
-      enteredDiscription.trim()=== '' ||
+      enteredDescription.trim()=== '' ||
       enteredDueDate.trim() === ''
     ){
       modal.current.open();
@@ -23,7 +23,7 @@ function NewProject({ onAdd, onCancel}) {
     }
       onAdd({
         title: enteredTitle,
-        discription: enteredDiscription,
+        description: enteredDescription,
         dueDate: enteredDueDate,
       });
   };
@@ -53,7 +53,7 @@ function NewProject({ onAdd, onCancel}) {
         </menu>
         <div>
           <Input ref={tittle} label="Title" />
-          <Input ref={discription} label="Discription" textarea />
+          <Input ref={description} label="Description" textarea />
           <Input ref={dueDate} type="date" label="Due Date" />
         </div>
       </div>
